@@ -12,6 +12,9 @@ from translation import Translation
 FROM = Config.FROM_CHANNEL
 TO = Config.TO_CHANNEL
 FILTER = Config.FILTER_TYPE
+e = Config.EPISODE
+b = Config.BOLUM
+
 
 @Client.on_message(filters.private & filters.command(["run"]))
 async def run(bot, message):
@@ -31,6 +34,9 @@ async def run(bot, message):
     async for message in bot.USER.search_messages(chat_id=FROM,offset=Config.SKIP_NO,limit=Config.LIMIT,filter=FILTER):
         try:
             if message.video:
+               global b, e
+                b = b + 1
+                e = e + 1
                 file_name = message.video.file_name
             elif message.document:
                 file_name = message.document.file_name
@@ -42,7 +48,7 @@ async def run(bot, message):
                 chat_id=TO,
                 from_chat_id=FROM,
                 parse_mode="md",       
-                caption=Translation.CAPTION.format(file_name),
+                caption=Config.CAPTION.format(b, e),
                 message_id=message.message_id
             )
             files_count += 1
