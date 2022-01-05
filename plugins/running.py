@@ -12,9 +12,8 @@ from translation import Translation
 FROM = Config.FROM_CHANNEL
 TO = Config.TO_CHANNEL
 FILTER = Config.FILTER_TYPE
-e = Config.EPISODE
 b = Config.BOLUM
-c = 0
+c = 1
 
 
 @Client.on_message(filters.private & filters.command(["run"]))
@@ -37,8 +36,6 @@ async def run(bot, message):
             if message.video:
                 global b
                 b = int(b) + int(c)
-                global e
-                e = int(e) + int(c)
                 file_name = message.video.file_name
             elif message.document:
                 file_name = message.document.file_name
