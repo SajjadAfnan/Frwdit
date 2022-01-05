@@ -36,8 +36,8 @@ async def run(bot, message):
         try:
             if message.video:
                 global b, e
-                b = b + c
-                e = e + c
+                b = int(b) + int(c)
+                e = int(e) + int(c)
                 file_name = message.video.file_name
             elif message.document:
                 file_name = message.document.file_name
