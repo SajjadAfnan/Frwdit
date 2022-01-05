@@ -18,6 +18,8 @@ class Config:
     LIMIT = int(os.environ.get("LIMIT", "25000"))
     SKIP_NO = int(os.environ.get("SKIP_NO", "0"))
     SESSION = os.environ.get("SESSION")
+    EPISODE = os.environ.get("EPISODE")
+    BOLUM = os.environ.get("BOLUM")
     TO_CHANNEL = int(os.environ.get("TO_CHANNEL", 12345))
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
