@@ -34,10 +34,10 @@ async def run(bot, message):
     files_count = 0
     async for message in bot.USER.search_messages(chat_id=FROM,offset=Config.SKIP_NO,limit=Config.LIMIT,filter=FILTER):
         try:
+            global b, ep
+            b = int(b) + int(c)
+            ep = int(ep) + int(c)
             if message.video:
-                global b, ep
-                b = int(b) + int(c)
-                ep = int(ep) + int(c)
                 file_name = message.video.file_name
             elif message.document:
                 file_name = message.document.file_name
